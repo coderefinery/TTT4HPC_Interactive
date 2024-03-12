@@ -38,26 +38,18 @@ levels, depending on your interest.
      can't do all exercises - but still might learn something!)
 
 
-.. csv-table::
-   :widths: auto
-   :delim: ;
-
-   xx min ; :doc:`laptop-to-cluster` Syncing workflows
-   xx min ; :doc:`sshfs`
-   xx min ; :doc:`interactive-work`
-   xx min ; :doc:`remote-kernels`
-   xx min ; :doc:`benchmarking`
-   xx min ; :doc:`monitoring-io`
-   xx min ; :doc:`container-and-archive-formats`
-   xx min ; :doc:`local-storage`
-   xx min ; :doc:`parallelizing-without-parallelizing`
-   xx min ; :doc:`automation`
-
 
 .. toctree::
    :maxdepth: 1
    :caption: The lesson
 
+   Welcome.md 
+   Motivation.md 
+   Project_arrangement.md 
+   Data_sync.md 
+   Code_sync.md
+   Working_interactively.md 
+   VSCode.md 
 
 .. toctree::
    :maxdepth: 1
