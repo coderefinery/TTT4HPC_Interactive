@@ -1,12 +1,12 @@
 # Data sync
 
-```{objectives}
+:::{objectives}
 - Make a data plan before you start: plan for the syncing you may need
 - You may need syncing for computing in multiple places, or for
   setup/backup.
 - You can transfer data and make two copies.
 - You can mount data and use it from place to place
-```
+:::
 
 
 ## Making a data plan
@@ -33,7 +33,6 @@ Consider:
   time?
 
 
-
 ## Example data plan for a distributed project
 
 :::{demo}
@@ -58,7 +57,6 @@ need to carefully manage our data.
     data.  This isn't very hard, so is always run on my local
     workstation so I can develop quickly.
 :::
-
 
 
 ## Transferring data
@@ -100,6 +98,15 @@ command line without profiles
 :::
 
 
+:::{exercise}: rsync
+
+- Rsync a directory from one computer to another, using `-a`
+- Modify one file and re-run rsync (now with the `-v`) option, and
+  verify that only the modified file is transferred
+:::
+
+
+
 ## Syncing data two-ways
 
 By it's nature, *it has to keep records of the last state on each
@@ -117,7 +124,8 @@ rsync protocol to do the actual transfers.
 
 Unison has to be installed on both sides.  Since recently, the version
 numbers don't have to exactly match.  You can download and use a
-static binary.
+static binary.  It has a GPU that is good for seeing and resolving
+changes, and a command line interface.
 
 #### Using unison
 
@@ -135,6 +143,39 @@ Syncing a directory from one place to another.  Show Unison from
 command line without profiles
 :::
 
+:::{exercise} unison
+- Install unison
+- Sync one directory
+- Modify two different files (one on each end) and re-sync
+- Modify the same file on both ends. Re-sync and see how it doesn't
+  touch that file until you specify how to resolve the conflict.
+:::
+
+
+
+## git-annex
+
+[git-annex](https://git-annex.branchable.com/) lets git track large
+files, but it *doesn't* store the contents of the files in the git
+history: instead, there are other commands that move the files
+directly from remote to remote. (`dvc` is similar)
+
+git-annex is nice for some cases, but it can be rather hard to use.
+Aalto SciComp has a [git-annex guide for
+scientists](https://scicomp.aalto.fi/scicomp/git-annex/), which
+explains things slightly more usably.
+
+Personal opinion (RD): Ask for help if you want to set it up.  It
+should probably be used more than it is, but for now let's consider it
+a specialist's tool.
+
+:::{exercise} git-annex
+- Install git-annex
+- Init a git-annex repository
+- Record one file with git-annex
+- Run `git-annex list`
+:::
+
 
 
 ## Mounting data from place to place
@@ -148,7 +189,16 @@ two views of the same data.
 - These are as slow as the internet connection between the files.
   Userspace tools like sshfs are even slower.
 
-
 :::{demo}
 Show SSHFS from desktop to cluster
 :::
+
+
+
+## Summary
+
+There are four ways of transferring data:
+- Copy data one-way
+- Synchronize data two-ways
+- Use git-annex to track data
+- Do a filesystem mount (sshfs)
