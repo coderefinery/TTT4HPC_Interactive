@@ -1,4 +1,52 @@
 # Code sync
 
-- What do we want to achieve?
-- git?
+```{objectives}
+- Keep a backup copy of your code
+- A workflow for coding on a cluster
+```
+
+## Introductions
+
+In the previous section we talked about syncing data.
+Most of the lessong there apply to this code as well, but
+there are some differences. Mainly, code changes more
+quickly than data and needs to be synced more often.
+
+You might also want to do most of your coding work locally,
+instead of coding on the cluster. There you will have all
+your favorite tools available and can be more productive.
+
+We will demonstrate a workflow for keeping your code in
+sync between a laptop and a cluster using git. On both
+systems, we will push the code to a cloud server and pull
+updates from there. This
+workflow comes with a great benefit, it keeps an online
+backup of the code up to date.
+
+You can use any cloud service that supports git, or even
+set up your own repository on a server you have ssh acces
+to.
+
+## Setup steps
+
+1. **Set up a git repository**: Create an empty repository
+   on a cloud service.
+
+2. **Push from one source**: Push your code to the cloud
+   repository.
+
+## Actual workflow
+
+1. **Pull from the cloud**: Before you start coding, pull
+   the latest version of the code from the cloud.
+
+2. **Commit and push**: While working, create periodic
+    commits and push them to the cloud.
+
+3. **Pull on the cluster**: Pull the changes to the cluster
+    to run tests of benchmarks.
+
+## Summary
+
+
+
