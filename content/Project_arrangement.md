@@ -76,6 +76,14 @@ Example:
   packaging](https://aaltoscicomp.github.io/python-for-scicomp/packaging/).
 
 
+## Exercise
+
+:::{exercise}
+- In the notes, share the best-organized project you have (it's ok if
+  it's not perfect: most aren't!).
+- Comment on what makes it good and what could be improved.
+:::
+
 
 ## Summary
 
