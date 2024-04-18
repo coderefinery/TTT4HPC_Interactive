@@ -35,18 +35,46 @@ to.
 2. **Push from one source**: Push your code to the cloud
    repository.
 
+```bash
+git remote add origin <url>
+git push -u origin main
+```
+
 ## Actual workflow
 
 1. **Pull from the cloud**: Before you start coding, pull
    the latest version of the code from the cloud.
 
+```bash
+git pull
+```
+
+2. **Make a change**: work on your code. Run any tests
+    you can run locally.
+
 2. **Commit and push**: While working, create periodic
     commits and push them to the cloud.
+
+```bash
+git commit -m "message"
+git push
+```
 
 3. **Pull on the cluster**: Pull the changes to the cluster
     to run tests of benchmarks.
 
+```bash
+git pull
+```
+
+- The main downside of the this workflow is that you cannot
+  test or benchmark your code where you edit it. You can 
+  still edit on the cluster side, just commit and push
+  before moving back to the local repository.
+
 ## Summary
 
-
+- A simple workflow that using git
+- Keeps an online backup up to date
+- Extra steps when testing on a cluster
 
