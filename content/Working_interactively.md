@@ -26,7 +26,8 @@ debugging).  You can, in fact, do this.
 :::{demo} X Forwarding
 - `ssh -X` and `ssh -Y`
 - `xeyes`
-- `gnuplot -p -e "plot sin(x)/x"`
+- Navigate to the R example directory
+- `gnuplot -c gnuplot.plt`
 ::::
 
 - Sends the image of the GUI to your local machine and
