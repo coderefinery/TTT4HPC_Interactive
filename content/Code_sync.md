@@ -29,25 +29,31 @@ to.
 
 ## Setup steps
 
-1. **Set up a git repository**: Create an empty repository
-   on a cloud service.
+1. **Set up a cloud repository**: Create a repository on
+   a cloud service like GitHub, GitLab, or Bitbucket. 
+   Clone it and add your code.
 
-2. **Push from one source**: Push your code to the cloud
-   repository.
+   If you are not familiar with this part, Coderefinery has
+   [excellent lessons](https://coderefinery.github.io/git-intro/)
+   on git and related workflows.
 
+2. **Clone to the repository**: Clone the repository to on the
+   cluster
+
+
+:::{demo} Cloning the repository for the demo
+- On both local and cluster
 ```bash
-git remote add origin <url>
-git push -u origin main
+git clone git@github.com:coderefinery/ttt4hpc-io-examples.git
+cd ttt4hpc-io-examples/R_example/
 ```
+:::
+
 
 ## Actual workflow
 
 1. **Pull from the cloud**: Before you start coding, pull
    the latest version of the code from the cloud.
-
-```bash
-git pull
-```
 
 2. **Make a change**: work on your code. Run any tests
     you can run locally.
@@ -55,17 +61,26 @@ git pull
 2. **Commit and push**: While working, create periodic
     commits and push them to the cloud.
 
-```bash
-git commit -m "message"
-git push
-```
-
 3. **Pull on the cluster**: Pull the changes to the cluster
     to run tests of benchmarks.
 
+:::{demo} Git workflow
+- On laptop
 ```bash
 git pull
 ```
+- Fix the script, test and commit
+```bash
+Rscript n_growing.R
+git commit -m "message"
+git push
+```
+- Test, benchmark and run on the cluster
+```bash
+git pull
+Rscript n_growing.R
+```
+:::
 
 - The main downside of the this workflow is that you cannot
   test or benchmark your code where you edit it. You can 
