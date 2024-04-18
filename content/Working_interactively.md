@@ -45,7 +45,7 @@ debugging).  You can, in fact, do this.
 - Open OOD
 - Look at the file system, verify it is the cluster
 - Open the Rstudio app
-- Edit the R script
+- Open and edit the R script
 :::
 
 
