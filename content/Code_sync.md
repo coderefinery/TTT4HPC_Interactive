@@ -29,16 +29,17 @@ to.
 
 ## Setup steps
 
-1. **Set up a git repository**: Create an empty repository
-   on a cloud service.
+1. **Set up a cloud repository**: Create a repository on
+   a cloud service like GitHub, GitLab, or Bitbucket. 
+   Clone it and add your code.
 
-2. **Push from one source**: Push your code to the cloud
-   repository.
+   If you are not familiar with this part, Coderefinery has
+   [excellent lessons](https://coderefinery.github.io/git-intro/)
+   on git and related workflows.
 
-```bash
-git remote add origin <url>
-git push -u origin main
-```
+2. **Clone to the repository**: Clone the repository to on the
+   cluster
+
 
 ## Actual workflow
 
