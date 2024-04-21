@@ -62,7 +62,8 @@ need to carefully manage our data.
 ## Transferring data
 
 Transfering data is relatively easy.
-- `ssh` (and programs that use ssh) is the standard method
+- `ssh` is the standard transport, and `scp`, `sftp`, `rsync`, and
+  more use `ssh`.
 - When data is super-massive, there are other protocols, but you'll
   learn them if you need them.
 - If you get two copies, you have to be careful *they don't get out of
@@ -80,18 +81,26 @@ Rsync transfers files, but does so smartly:
 
 Basic usage:
 
-```{console}
+```console
 $ rsync FILE_OR_DIRECTORY HOST:FILE_OR_DIRECTORY
 ```
 There are many options for almost any problem you may have:
-- `-t`: Preserve timestamps
-- `-a`: Mirror everything fully (includes `-r`)
 - `-r`: Recursive
+- `-t`: Preserve timestamps
+- `-a`: Mirror everything fully (includes `-r` and `-t`)
+- Recommendation: `-a` is usually good, but `-rt` may be good on
+  clusters where you can't (or don't want to) preserve users, groups,
+  and permissions.
+- `-v` and `-i` print out more information on exactly what is being
+  transferred
+- `-n` (`--dry-run`) prints out what would happen, but doesn't do it.
 - `--update` skip files that are newer on the receiving end
+- To put files exactly where you want, I recommend giving two full
+  paths, both with a `/` on the end.
 
 It can go either way, but it *can't* go between two remotes.
 
-:::{demo} Demonstration of unison
+:::{demo} Demonstration of rsync
 
 Syncing a directory from one place to another.  Show Unison from
 command line without profiles
@@ -100,9 +109,23 @@ command line without profiles
 
 :::{exercise}: rsync
 
-- Rsync a directory from one computer to another, using `-a`
-- Modify one file and re-run rsync (now with the `-v`) option, and
-  verify that only the modified file is transferred
+1. Install rsync if you don't already have it (It is in all package
+   managers on Linux.  It's default on MacOS.  I'm not sure the best
+   option on Windows.  And it's almost certainly on any HPC cluster
+   out there.)
+
+Do the following, and as your assignment, save all of the console log.
+
+2. Find, or make, a directory with 5-10 files in it.  (You can have
+   more, but 5-10 keeps the console logs more reasonable.  Your choice.)
+
+3. Rsync the directory from one computer to the cluster, using `-rtiv`
+
+4. Modify one file and re-run rsync (still using `-rtiv`) option, and
+   verify that only the modified file is transferred.
+
+At each step, write (in your own free-form words) what is happening.
+Include your console input and output in your submission.
 :::
 
 
@@ -120,7 +143,9 @@ If you need more than two ends, make a star topology.
 ### Unison: syncing data
 
 Unison is a program that does bi-directional syncing.  It uses the
-rsync protocol to do the actual transfers.
+rsync protocol to do the actual transfers.  (There are multiple things
+called unison, this is https://www.cis.upenn.edu/~bcpierce/unison/ and
+https://github.com/bcpierce00/unison and *not* Intel Unison.
 
 Unison has to be installed on both sides.  Since recently, the version
 numbers don't have to exactly match.  You can download and use a
@@ -132,10 +157,17 @@ changes, and a command line interface.
 The basic syntax looks like:
 
 ```console
-unison word-count/ ssh://HOSTNAME//full/path/to/word-count/
+$ unison word-count/ ssh://HOSTNAME//full/path/to/word-count/
+$ unison word-count/ ssh://HOSTNAME/relative/path/to/word-count/
 ```
 
-It stores the state files in `~/.unison/`
+Useful options:
+- `-servercmd PATH` tells a path to unison on the remote end (if it's
+  not in `$PATH`
+- `unison-gtk` provides a graphical application which makes resolving
+  conflicts quite nice, including diffing them.
+
+It stores the state files in `~/.unison/` on both ends.
 
 :::{demo} Demonstration of unison
 
@@ -144,11 +176,31 @@ command line without profiles
 :::
 
 :::{exercise} unison
-- Install unison
-- Sync one directory
-- Modify two different files (one on each end) and re-sync
-- Modify the same file on both ends. Re-sync and see how it doesn't
-  touch that file until you specify how to resolve the conflict.
+
+1. Install unison on your computer and the HPC cluster.
+
+   - On Linux it's likely to be in package managers, but only versions
+     2.52 and higher support syncing without local and remote being
+     the exact same versions.  Check this first (2.52+ is in Debian
+     stable but not Ubuntu 22.04 LTS, for example).
+
+   - There are downloads for other operating systems on the [releases
+     page](https://github.com/bcpierce00/unison/releases).
+
+   - You probably need to install it on the cluster yourself.  On the
+     [releases page](https://github.com/bcpierce00/unison/releases),
+     the `unison-XXXXXX-ubuntu-x86_64-static.tar.gz ` is statically
+     built and thus probably works on your cluster.  Download and copy
+     just the `bin/unison` program over - that is all that's needed.
+
+2. Sync one directory
+
+3. Modify two different files (one on each end) and re-sync
+4. Modify the same file on both ends. Re-sync and see how it doesn't
+   touch that file until you specify how to resolve the conflict.
+
+Send all the commands you ran, their console outputs, and reflections
+on what each step was doing (free-form text)
 :::
 
 
@@ -165,15 +217,71 @@ Aalto SciComp has a [git-annex guide for
 scientists](https://scicomp.aalto.fi/scicomp/git-annex/), which
 explains things slightly more usably.
 
+Installation: Linux package manager, conda-forge, or download from the
+website.
+
 Personal opinion (RD): Ask for help if you want to set it up.  It
 should probably be used more than it is, but for now let's consider it
 a specialist's tool.
 
-:::{exercise} git-annex
-- Install git-annex
-- Init a git-annex repository
-- Record one file with git-annex
-- Run `git-annex list`
+:::::{demo}
+- Show the CodeRefinery [video-processing
+  repository](https://github.com/coderefinery/video-processing).  You
+  can see this online, but the online version doesn't include the files.
+  ```console
+  $ cd video/video-processing
+  ```
+
+- Run `git-annex list` in it to see the files:
+
+  ```console
+  $ git annex list ttt4hpc-2024/
+  here
+  |origin
+  ||triton
+  |||allas
+  ||||web
+  |||||bittorrent
+  ||||||
+  X_XX__ ttt4hpc-2024/out/day1-intro.mkv
+  X_XX__ ttt4hpc-2024/out/day1-io.mkv
+  X_XX__ ttt4hpc-2024/out/day1-resources.mkv
+  X_XX__ ttt4hpc-2024/out/day1.1-icebreaker.mkv
+  X_X___ ttt4hpc-2024/raw/day1-obs.mkv
+  ```
+
+  This shows that the ttt4hpc-2024 videos are "here" (my desktop), on
+  `triton` (the cluster), and the processed videos (`out/`) are in
+  Allas (a national S3 object storage).
+
+- Get a video.  This repository is set to auto-init the S3 special
+  remote, so you can download videos without YouTube.  You can even
+  help improve the captions if there was something wrong (or if you
+  are fast enough, help with the processing after the course by
+  writing descriptions or debugging captions).
+
+  ```console
+  $ git annex get ttt4hpc-2024/out/day1.1-icebreaker.mkv
+  get ttt4hpc-2024/out/day1.1-icebreaker.mkv (from allas...)
+
+  (checksum...) ok
+  (recording state in git...)
+
+  ```
+
+:::::
+
+:::{exercise} git-annex (optional, advanced)
+
+This exercise is advanced and thus not recommended for most people.
+
+1. Install git-annex
+2. Clone the [video-processing repository](https://github.com/coderefinery/video-processing).
+3. Run `git-annex init` to set up your copy for git-annex (no date is
+   sent anywhere else)
+4. Run `git-annex list` and see what files are available for getting
+   (all the files are also broken symbolic links)
+5. Run `git-annex get FILENAME` and see it appear.
 :::
 
 
@@ -189,9 +297,28 @@ two views of the same data.
 - These are as slow as the internet connection between the files.
   Userspace tools like sshfs are even slower.
 
-:::{demo}
-Show SSHFS from desktop to cluster
-:::
+:::::{demo}
+We will show SSHFS from desktop to cluster.  This assumes I've made
+the directory `mnt/triton/` (my `$HOME/mnt/` directory contains places
+for all the things I usually sshfs mount).
+
+```console
+## This mounts the relative directory git/ , which is $HOME/git/
+$ sshfs triton:git/ mnt/triton/
+
+$ ls mnt/triton | head -3
+clean-shell/
+envkernel/
+fancyquota/
+```
+:::::
+
+:::::{exercise}
+- SSHFS mount a remote directory that has a large file in it.
+- Run `time md5sum` (or some other checksum program) on both the
+  mounted file, and via ssh to the cluster.
+- Compare the times it takes to run
+:::::
 
 
 
