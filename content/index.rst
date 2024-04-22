@@ -43,11 +43,11 @@ levels, depending on your interest.
    :maxdepth: 1
    :caption: The lesson
 
-   Welcome.md 
    Motivation.md 
    Project_arrangement.md 
    Data_sync.md 
    Code_sync.md
+   GUIs.md
    Working_interactively.md 
    VSCode.md 
 

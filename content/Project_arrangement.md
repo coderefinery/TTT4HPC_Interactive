@@ -41,6 +41,11 @@ Examples:
 My recommendation is that these directories are as flat as possible,
 not sub-directories of each other.  This makes it easy to manage.
 
+How do people work together:
+- Everyone has their own local clone of the code (good for the code
+  directories and other workspaces)
+- One shared folder that everyone edits (good for data, etc.)
+
 
 
 ## Directories within projects
@@ -65,6 +70,29 @@ Example:
 
 
 
+## Directories for teams
+
+- Usually you get *one* directory per project allocated on the cluster.
+- Then often subfolders for each user, for their own workspaces.
+  Stuff within here is synced with git
+- Common data folders referred to by each individual's workspaces.
+
+Example:
+
+- `SCRATCH/project-2569456905/` - the main directory allocated by the
+  cluster admins
+- `SCRATCH/project-2569456905/user1/`
+- `SCRATCH/project-2569456905/user1/code-projA/` - tracked with git
+- `SCRATCH/project-2569456905/user1/code-projB/`
+- `SCRATCH/project-2569456905/user2/`
+- `SCRATCH/project-2569456905/user2/code-projA/`
+- `SCRATCH/project-2569456905/user3/`
+- `SCRATCH/project-2569456905/user4/`
+- `SCRATCH/project-2569456905/projA-common-data/` - manually managed / git-annex
+
+
+
+
 ## Code arrangement
 - An installable software package can be reused easily in different
   projects, via the project requirements.
@@ -76,13 +104,17 @@ Example:
   packaging](https://aaltoscicomp.github.io/python-for-scicomp/packaging/).
 
 
-## Exercise
+## Group work
 
-:::{exercise}
+:::{type-along} Together: share project arrangements
 - In the notes, share the best-organized project you have (it's ok if
   it's not perfect: most aren't!).
 - Comment on what makes it good and what could be improved.
 :::
+
+## See also
+
+- CodeRefinery reproducibility lesson
 
 
 ## Summary

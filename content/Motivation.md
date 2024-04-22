@@ -1,6 +1,16 @@
 # Motivation
 
-- start broad, what to do when getting access to a cluster -> "a day in the life with HPC"
-- story: maybe run a simple script that makes a figure ?
-- geography of things: different homes in different places, different speed of access to data)
-- Next: we show how to do it with various options (terminal, screen, sinteractive, srun tty, sshfs, gui tools ood vscode) 
+- This day is about the daily struggle with HPC: how do people
+  actually interact with the cluster?  What are the nicer tools than
+  SSH, but can' be taught in normal courses since they don't work for
+  everywhere/everyone?
+- You will see these ways of interaction today:
+  - Transferring data
+  - Transferring code
+  - Running in testing or interactive mode on the cluster.
+  - Using graphical interfaces on the cluster.
+  - Using an IDE (VS Code)
+- We will try to explain the *geography* of the cluster: what is
+  everything?  How does it connect?
+  - different homes in different places
+  - different speed of access to data

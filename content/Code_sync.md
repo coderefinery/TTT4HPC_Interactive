@@ -87,15 +87,17 @@ Rscript n_growing.R
   still edit on the cluster side, just commit and push
   before moving back to the local repository.
 
-:::{exercise} Code Sync
+:::{exercise} Homework: Code Sync
 1. **Code Sync**
    - Clone a git repository on the cluster and your local machine
    - Make an edit on the local machine and push it to the cloud
    - Pull the changes on the cluster
 :::
-:::{exercise} Code Rsync
+:::{exercise} Homework: Code Rsync
 1. **Code Rsync**
-   - Copy a git repository to the cluster using `rsync -r repository user@cluster:`
+   - Copy a git repository to the cluster using `rsync -r repository
+     user@cluster:`
+2. For your homework, write some reflections on:
    - Is this different from a clone?
    - What are the advantages and disadvantages of this method?
    - Can you still push to a remote repository?

@@ -102,17 +102,17 @@ It can go either way, but it *can't* go between two remotes.
 
 :::{demo} Demonstration of rsync
 
-Syncing a directory from one place to another.  Show Unison from
-command line without profiles
+Syncing a directory from one place to another.  Show rsync from
+command line
 :::
 
 
-:::{exercise} rsync
+:::{exercise} Exercise: rsync
 
 1. Install rsync if you don't already have it (It is in all package
    managers on Linux.  It's default on MacOS.  I'm not sure the best
-   option on Windows.  And it's almost certainly on any HPC cluster
-   out there.)
+   option on Windows, but it is possible.  And it's almost certainly
+   on any HPC cluster out there.)
 
 Do the following, and as your assignment, save all of the console log.
 
@@ -175,7 +175,7 @@ Syncing a directory from one place to another.  Show Unison from
 command line without profiles
 :::
 
-:::{exercise} unison
+:::{exercise} Exercise: unison
 
 1. Install unison on your computer and the HPC cluster.
 
@@ -271,7 +271,7 @@ a specialist's tool.
 
 :::::
 
-:::{exercise} git-annex (optional, advanced)
+:::{exercise} Exercise: git-annex (optional, advanced)
 
 This exercise is advanced and thus not recommended for most people.
 
@@ -282,6 +282,9 @@ This exercise is advanced and thus not recommended for most people.
 4. Run `git-annex list` and see what files are available for getting
    (all the files are also broken symbolic links)
 5. Run `git-annex get FILENAME` and see it appear.
+6. Figure out how git-annex knows where to automatically store every file.
+   Hint: check the git-annex manual page.  List the rules that exist
+   for the "triton" and "allas" remotes.
 :::
 
 
@@ -313,7 +316,7 @@ fancyquota/
 ```
 :::::
 
-:::::{exercise}
+:::::{exercise} Exercise: sshfs
 - SSHFS mount a remote directory that has a large file in it.
 - Run `time md5sum` (or some other checksum program) on both the
   mounted file, and via ssh to the cluster.
@@ -327,5 +330,5 @@ fancyquota/
 There are four ways of transferring data:
 - Copy data one-way
 - Synchronize data two-ways
-- Use git-annex to track data
+- Use git (annex) to track data
 - Do a filesystem mount (sshfs)
