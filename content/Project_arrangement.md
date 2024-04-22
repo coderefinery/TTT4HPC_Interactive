@@ -1,12 +1,13 @@
 # Project arrangement
 
 :::{objectives}
-- Project arrangement matters to keep things organized for the future
-- Choose names that represent contents of project directories
+- Project arrangement is the way you organize files into directories
+  and projects.
+- Project directories: Choose good names and divide up files well
 - Keep types of files organized within directories
 :::
 
-Project arrangement is little discussed (beyond "make directories"),
+Project arrangement not usually discussed (beyond "make directories"),
 but setting this up will can be a good start to everything that comes
 later. A good arrangement makes syncing, backup, and reproducibility
 much easier.
@@ -15,36 +16,61 @@ much easier.
 
 ## Why project arrangement matters
 
-- Anything that makes sense now won't make sense in a few months or years
+:::{admonition} Story time: the missing file
+
+One of the authors has some file they would like to find, from
+around 2007.  They probably have it backed up somewhere, but it was in
+a directory, that got compressed, and then the directory containing
+that got compressed/backed up again.  Maybe one other round?
+
+It probably *could* be found but it's not worth the instructor's time anymore.
+:::
+
+- If arrangement isn't good, then you will eventually forget how
+  things are organized.
 - If you arrange projects well, then moving them around is easier
-- Keep similar types of data together.
-- Every project should have a minimal README explaining to *you* what
-  the project is about.
+- Keeping similar types of data together makes it easier to manage.
+
+
+
+## Group work
+
+:::{type-along} Together: share project arrangements
+- In the notes, share the best-organized (or worst-organized) project
+  you have (it's ok if it's not perfect: most aren't!).
+- Comment on what makes it good and what could be improved.
+
+We'll discuss at the end.
+:::
+
 
 
 
 ## Naming projects and keeping them organized
 
-- Decide what goes together, give it a unique name
-- Each directory with that name should fundamentally be the same.
-- Each directory is synced as a whole (git, rsync, etc), excluding
-  ignored files - we'll take about this later. This prevents some
-  difficult sync things.
+- **Decide what goes together**, call it a project
+- Give a **unique name** for each project
+- That **name always refers to the same thing**, on every computer.
+- **Each directory should be managed the same way** - git, rsync,
+  etc.  We'll take about this later.
+- Every project should have at least a **minimal README** explaining
+  to *you* what the project is about.
 
 Examples:
 
-- `project`  (main project directory)
-- `project-data` (this project has too much data or the data is reused
+- `projA`  (main project directory)
+- `projA-data` (this project has too much data or the data is reused
   among multiple projects, so it's split out)
-- `project-paper` (the articles are tracked separately)
+- `projA-paper1` (the articles are tracked separately)
 
 My recommendation is that these directories are as flat as possible,
 not sub-directories of each other.  This makes it easy to manage.
 
-How do people work together:
-- Everyone has their own local clone of the code (good for the code
+Ways of working together:
+
+- Everyone has their own **local clone** of the code (good for the code
   directories and other workspaces)
-- One shared folder that everyone edits (good for data, etc.)
+- **One shared folder** that everyone edits (good for data, etc.)
 
 
 
@@ -63,18 +89,19 @@ Example:
   code+original
 - `PROJECT/doc/` - final outputs, which should be kept for a very long
   term.
-- `PROJECT/doc/paper1/` - different papers/reports, if not stored in a
+- `PROJECT/paper1/` - different papers/reports, if not stored in a
   different project directory.
-- `PROJECT/doc/paper2/`
-- `PROJECT/doc/opendata/`
+- `PROJECT/paper2/`
+- `PROJECT/opendata/` - things you will share
 
 
 
 ## Directories for teams
 
-- Usually you get *one* directory per project allocated on the cluster.
-- Then often subfolders for each user, for their own workspaces.
-  Stuff within here is synced with git
+- Usually you get *one* directory per project allocated on the
+  cluster.
+- This has to be divided further
+- Then often subdirectories for each user, for their own workspaces.
 - Common data folders referred to by each individual's workspaces.
 
 Example:
@@ -92,7 +119,6 @@ Example:
 
 
 
-
 ## Code arrangement
 - An installable software package can be reused easily in different
   projects, via the project requirements.
@@ -104,22 +130,27 @@ Example:
   packaging](https://aaltoscicomp.github.io/python-for-scicomp/packaging/).
 
 
+
 ## Group work
 
 :::{type-along} Together: share project arrangements
-- In the notes, share the best-organized project you have (it's ok if
-  it's not perfect: most aren't!).
-- Comment on what makes it good and what could be improved.
+- We'll look at the notes and for questions and stories from the group
+  work above.
 :::
+
+
 
 ## See also
 
-- CodeRefinery reproducibility lesson
+- [CodeRefinery reproducibility
+  lesson](https://coderefinery.github.io/reproducible-research/),
+  [Organizing your projects episode](https://coderefinery.github.io/reproducible-research/organizing-projects/)
+
 
 
 ## Summary
 
-- Don't be too fancy in your arrangements.
+- Don't be too fancy in your project arrangements.
 - Plan for a future where you don't remember how it was arranged.
 - Keep different types of data together (either in project
-  directories, or sub-directories)
+  directories, or sub-directories).
