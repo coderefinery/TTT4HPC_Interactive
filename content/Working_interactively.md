@@ -10,7 +10,6 @@ debugging).  You can, in fact, do this.
 
 ## GUI
 
-- Many start with GUI
 - Ways this is possible on HPC too
 - RStudio/Jupyter/VSCode
 - GUI software via OOD or -X
@@ -49,6 +48,19 @@ debugging).  You can, in fact, do this.
 - Open and edit the R script
 :::
 
+
+:::{exercise} Graphical User Interfaces
+1. **Graphical User Interfaces**
+   - Find out what GUIs are available on the cluster
+   - Is your favorite text editor available?
+   - What other graphical applications are available? What would you use if they were?
+   - Try uploading or downloading afile
+:::
+:::{exercise} X Forwarding
+1. **X Forwarding**
+   - What is the difference between `ssh -X` and `ssh -Y`? (Do a web search and see what you can find.)
+   - Try running a graphical application on the cluster and displaying it on your local machine
+:::
 
 ## Interactive jobs
 
