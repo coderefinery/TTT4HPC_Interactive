@@ -107,7 +107,7 @@ command line
 :::
 
 
-:::{exercise} Exercise: rsync
+:::{exercise} Homework: rsync
 
 1. Install rsync if you don't already have it (It is in all package
    managers on Linux.  It's default on MacOS.  I'm not sure the best
@@ -175,7 +175,7 @@ Syncing a directory from one place to another.  Show Unison from
 command line without profiles
 :::
 
-:::{exercise} Exercise: unison
+:::{exercise} Homework: unison
 
 1. Install unison on your computer and the HPC cluster.
 
@@ -271,7 +271,7 @@ a specialist's tool.
 
 :::::
 
-:::{exercise} Exercise: git-annex (optional, advanced)
+:::{exercise} Homework: git-annex (optional, advanced)
 
 This exercise is advanced and thus not recommended for most people.
 
@@ -316,18 +316,22 @@ fancyquota/
 ```
 :::::
 
-:::::{exercise} Exercise: sshfs
-- SSHFS mount a remote directory that has a large file in it.
-- Run `time md5sum` (or some other checksum program) on both the
-  mounted file, and via ssh to the cluster.
-- Compare the times it takes to run
+:::::{exercise} Homework: sshfs
+1. Install SSHFS on whatever computer you use for daily local work.
+2. SSHFS mount a remote directory that has a large file in it. (you
+   can make a 1GB file with `dd if=/dev/urandom of=some_file bs=1M count=1000`)
+3. Run `time md5sum` (or some other checksum program) on both the
+   mounted file, and via ssh to the cluster.
+4. How does the run time compare on the sshfs mounted file, and
+   directly on the cluster?  How fast of network speed should you have
+   between your computer and the cluster?
 :::::
 
 
 
 ## Summary
 
-There are four ways of transferring data:
+There are four ways of transferring data, and each has its own place:
 - Copy data one-way
 - Synchronize data two-ways
 - Use git (annex) to track data
