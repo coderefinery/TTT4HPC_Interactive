@@ -27,5 +27,11 @@ Which places are the same?  And so on.  For example,
 ## About the homework
 
 This day has various exercises/homeworks embedded within it.  Unlike
-day 1, these aren't as exciting since they are mostly repeating what
-is demoed.  We can adjust the exercises to suit people's interests.
+day 1, these are mostly doing implementing the demos and trying them
+out.  We can adjust the exercises to suit people's interests.
+
+Many of them require something to be installed on your own computer,
+since they are about copying data to or from the cluster, and you need
+the corresponding program installed.  This may make some of the
+exercises harder to do for some people.  We'll discuss that in the
+exercise session.
