@@ -107,7 +107,7 @@ command line without profiles
 :::
 
 
-:::{exercise}: rsync
+:::{exercise} rsync
 
 1. Install rsync if you don't already have it (It is in all package
    managers on Linux.  It's default on MacOS.  I'm not sure the best
