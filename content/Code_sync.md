@@ -43,9 +43,9 @@ to.
 
 :::{demo} Cloning the repository for the demo
 - On both local and cluster
-```bash
-git clone git@github.com:coderefinery/ttt4hpc-io-examples.git
-cd ttt4hpc-io-examples/R_example/
+```console
+$ git clone git@github.com:coderefinery/ttt4hpc-io-examples.git
+$ cd ttt4hpc-io-examples/R_example/
 ```
 :::
 
@@ -66,19 +66,19 @@ cd ttt4hpc-io-examples/R_example/
 
 :::{demo} Git workflow
 - On laptop
-```bash
-git pull
+```console
+$ git pull
 ```
 - Fix the script, test and commit
-```bash
-Rscript n_growing.R
-git commit -m "message"
-git push
+```console
+$ Rscript n_growing.R
+$ git commit -m "message"
+$ git push
 ```
 - Test, benchmark and run on the cluster
-```bash
-git pull
-Rscript n_growing.R
+```console
+$ git pull
+$ Rscript n_growing.R
 ```
 :::
 
