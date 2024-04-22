@@ -11,12 +11,12 @@
 
 ## Making a data plan
 
-Make a plan before you start!  Or at least, understand how you may
-need to adapt later.  You will almost always need some of:
+Make a plan before you start!  *Syncing everything to everywhere will
+result in unmanageable copies.*
 
-1. Getting original data, making a copy for analysis
-2. Archiving data after you are done
-3. Moving data from place to place, *during* the project,
+1. Getting original data, making a **copy for analysis**
+2. **Archiving data** after you are done
+3. **Moving** data from place to place, *during* the project,
 4. same as (3) but and *it may even be updated on both sides at the
    same time.*
 
@@ -31,6 +31,7 @@ Consider:
   good at both at the same time.
 - Will data be updated in multiple places, or in only one place at a
   time?
+
 
 
 ## Example data plan for a distributed project
@@ -63,7 +64,8 @@ need to carefully manage our data.
 
 Transfering data is relatively easy.
 - `ssh` is the standard transport, and `scp`, `sftp`, `rsync`, and
-  more use `ssh`.
+  more all use `ssh`.
+  - Set up a [SSH config file](https://scicomp.aalto.fi/scicomp/ssh/#ssh-config).
 - When data is super-massive, there are other protocols, but you'll
   learn them if you need them.
 - If you get two copies, you have to be careful *they don't get out of
@@ -74,8 +76,8 @@ Transfering data is relatively easy.
 
 Rsync transfers files, but does so smartly:
 - If only some parts of the file are changed, only transfer those
-  parts
-- Resume interrupted transfers
+  parts.
+- Resume interrupted transfers.
 - Mirror entire directory trees, including options for permissions,
   timestamps, deleting files, etc.
 
@@ -192,10 +194,12 @@ command line without profiles
      the `unison-XXXXXX-ubuntu-x86_64-static.tar.gz ` is statically
      built and thus probably works on your cluster.  Download and copy
      just the `bin/unison` program over - that is all that's needed.
+     Use `-servercmd path/to/unison` to tell where to find it.
 
 2. Sync one directory
 
 3. Modify two different files (one on each end) and re-sync
+
 4. Modify the same file on both ends. Re-sync and see how it doesn't
    touch that file until you specify how to resolve the conflict.
 
@@ -266,7 +270,6 @@ a specialist's tool.
 
   (checksum...) ok
   (recording state in git...)
-
   ```
 
 :::::
@@ -285,6 +288,14 @@ This exercise is advanced and thus not recommended for most people.
 6. Figure out how git-annex knows where to automatically store every file.
    Hint: check the git-annex manual page.  List the rules that exist
    for the "triton" and "allas" remotes.
+
+Then, try to make your own repository (you'll need to follow the [walkthrough](https://git-annex.branchable.com/walkthrough/):
+
+7. Create a new git repository
+8. Initialize git-annex inside of it
+9. Add a file to git-annex
+10. See how the directory changed (`ls -l`)
+
 :::
 
 
@@ -296,7 +307,7 @@ two views of the same data.
 - Data isn't copied, but a view is made (technical term: filesystem mount)
 - Commonly used within internal networks (this is how all files on all nodes on a cluster look the same)
 - Useful for (for example) viewing output figures and so on.
-- Common and easy to use: sshfs
+- Common and easy to use: sshfs (it uses ssh!)
 - These are as slow as the internet connection between the files.
   Userspace tools like sshfs are even slower.
 
@@ -318,6 +329,9 @@ fancyquota/
 
 :::::{exercise} Homework: sshfs
 1. Install SSHFS on whatever computer you use for daily local work.
+   - You'll have to figure out if this is easy (it might not be
+     possible).
+
 2. SSHFS mount a remote directory that has a large file in it. (you
    can make a 1GB file with `dd if=/dev/urandom of=some_file bs=1M count=1000`)
 3. Run `time md5sum` (or some other checksum program) on both the
@@ -331,8 +345,7 @@ fancyquota/
 
 ## Summary
 
-There are four ways of transferring data, and each has its own place:
+There are three main ways of transferring data, and each has its own place:
 - Copy data one-way
 - Synchronize data two-ways
-- Use git (annex) to track data
-- Do a filesystem mount (sshfs)
+- Do a filesystem mount (sshfs) to make another view of the same data
