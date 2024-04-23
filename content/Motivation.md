@@ -23,7 +23,7 @@ Which places are the same?  And so on.  For example,
 - Different speed of access to data from different places.
 
 ```{figure} img/cluster-schematic-cluster.png
-:scale: 100 %
+:width: 100 %
 :alt: The physical map of a typical HPC cluster
 
 The geography of an HPC cluster -- From home or from your office (left hand side) you can connect to the cluster (right hand side) via a **login node**. This is just an entry point for the cluster and no big processes should ever be run here. From the login node you can submit your non-interactive jobs, request an interactive terminal session, transfer data, check the status of your jobs. It is important to notice that the storage you have on the cluster is a special storage connected to all cluster nodes that allows fast I/O (usually implemented with Infiniband technology). Fast I/O comes with a few compromises: i) access to storages that are not inside the cluster (e.g. your university cloud storage) is going to be slow; ii) to ensure fast I/O and large disk space, the cluster high-speed /scratch storage is not backed up; iii) the Internet bandwidth from the computing nodes might be limited.
