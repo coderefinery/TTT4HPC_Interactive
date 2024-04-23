@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphical interfaces &mdash; Real-life compute cluster workflows  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Working interactively (CLI)" href="../Working_interactively/" />
+    <link rel="prev" title="Code sync" href="../Code_sync/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Real-life compute cluster workflows
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Motivation/">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Project_arrangement/">Project arrangement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_sync/">Data sync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Code_sync/">Code sync</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Graphical interfaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#x-forwarding">X Forwarding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-on-demand">Open On Demand</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Working_interactively/">Working interactively (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VSCode/">VSCode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instructor-guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Real-life compute cluster workflows</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Graphical interfaces</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/GUIs.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graphical-interfaces">
+<h1>Graphical interfaces<a class="headerlink" href="#graphical-interfaces" title="Permalink to this heading"></a></h1>
+<p>Clusters are about batch processing: they provide tons of resources
+and there are lots of users, and all those scheduled as efficiently as
+possible. But sometimes, being able to see the computations as they
+come out with your own eyes helps (mainly in either development or
+debugging).  You can, in fact, do this.</p>
+<div class="admonition-initial-notes admonition">
+<p class="admonition-title">Initial notes</p>
+<p class="rubric">GUI</p>
+<ul class="simple">
+<li><p>Many start with GUI</p></li>
+<li><p>Ways this is possible on HPC too</p></li>
+<li><p>RStudio/Jupyter/VSCode</p></li>
+<li><p>GUI software via OOD or -X</p></li>
+</ul>
+</div>
+<section id="x-forwarding">
+<h2>X Forwarding<a class="headerlink" href="#x-forwarding" title="Permalink to this heading"></a></h2>
+<div class="admonition-x-forwarding demo admonition" id="demo-0">
+<p class="admonition-title">X Forwarding</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span></code> and <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-Y</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xeyes</span></code></p></li>
+<li><p>Navigate to the R example directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gnuplot</span> <span class="pre">-c</span> <span class="pre">gnuplot.plt</span></code></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>Sends the image of the GUI to your local machine and
+the input back to the remote machine.</p></li>
+<li><p>Needs a fast network, otherwise get’s very laggy</p></li>
+</ul>
+</section>
+<section id="open-on-demand">
+<h2>Open On Demand<a class="headerlink" href="#open-on-demand" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>A more efficient way of running graphical applications
+on the cluster</p></li>
+<li><p>The interface depends on the cluster</p></li>
+<li><p>Not available on all clusters</p></li>
+</ul>
+<div class="admonition-open-on-demand demo admonition" id="demo-1">
+<p class="admonition-title">Open On Demand</p>
+<ul class="simple">
+<li><p>Open OOD</p></li>
+<li><p>Look at the file system, verify it is the cluster</p></li>
+<li><p>Open the Rstudio app</p></li>
+<li><p>Open and edit the R script</p></li>
+</ul>
+</div>
+<div class="admonition-graphical-user-interfaces exercise important admonition" id="exercise-0">
+<p class="admonition-title">Graphical User Interfaces</p>
+<ol class="arabic simple">
+<li><p><strong>Graphical User Interfaces</strong></p>
+<ul class="simple">
+<li><p>Find out what GUIs are available on the cluster</p></li>
+<li><p>Is your favorite text editor available?</p></li>
+<li><p>What other graphical applications are available? What would you use if they were?</p></li>
+<li><p>Try uploading or downloading afile</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="admonition-x-forwarding exercise important admonition" id="exercise-1">
+<p class="admonition-title">X Forwarding</p>
+<ol class="arabic simple">
+<li><p><strong>X Forwarding</strong></p>
+<ul class="simple">
+<li><p>What is the difference between <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span></code> and <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-Y</span></code>? (Do a web search and see what you can find.)</p></li>
+<li><p>Try running a graphical application on the cluster and displaying it on your local machine</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Code_sync/" class="btn btn-neutral float-left" title="Code sync" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Working_interactively/" class="btn btn-neutral float-right" title="Working interactively (CLI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

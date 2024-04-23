@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Working interactively (CLI) &mdash; Real-life compute cluster workflows  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="VSCode" href="../VSCode/" />
+    <link rel="prev" title="Graphical interfaces" href="../GUIs/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Real-life compute cluster workflows
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Motivation/">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Project_arrangement/">Project arrangement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_sync/">Data sync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Code_sync/">Code sync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GUIs/">Graphical interfaces</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Working interactively (CLI)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#interactive-jobs">Interactive jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sessions-that-persist-across-logins-screen-and-tmux">Sessions that persist across logins: screen and tmux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shell-tips-and-tricks">Shell tips and tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../VSCode/">VSCode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instructor-guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Real-life compute cluster workflows</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Working interactively (CLI)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/Working_interactively.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="working-interactively-cli">
+<h1>Working interactively (CLI)<a class="headerlink" href="#working-interactively-cli" title="Permalink to this heading"></a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Interactive jobs allow better debugging</p></li>
+<li><p>screen and tmux allow you to keep things running when you log out.</p></li>
+<li><p>Command line debuggers exist and work</p></li>
+<li><p>Some common shell config can make your life easier.</p></li>
+</ul>
+</div>
+<p>Clusters are about batch processing: they provide tons of resources
+and there are lots of users, and all those scheduled as efficiently as
+possible. But sometimes, being able to see the computations as they
+come out with your own eyes helps (mainly in either development or
+debugging).  You can, in fact, do this.</p>
+<section id="interactive-jobs">
+<h2>Interactive jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this heading"></a></h2>
+<p><strong>Submit, wait, review, repeat.</strong>  That’s too slow for development.
+What can you do?  Interactive jobs.</p>
+<p>You can request resources, but instead of running the program
+directly, you get a shell.  Use the shell to run your tests, over and
+over again.</p>
+<div class="admonition-demo-interactive-jobs demo admonition" id="demo-0">
+<p class="admonition-title">Demo: Interactive jobs</p>
+<ul class="simple">
+<li><p>Demo <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p>
+<ul>
+<li><p>This runs a job and gets a shell</p></li>
+<li><p>You can run your jobs over and over as a test</p></li>
+<li><p>There may be other options to use, like <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">interactive</span></code>, or a
+different command like <code class="docutils literal notranslate"><span class="pre">sinteractive</span></code>.  Read your instructions</p></li>
+</ul>
+</li>
+<li><p>Other clusters may have other</p></li>
+</ul>
+</div>
+<p>When is this useful?  When is this a problem?</p>
+<div class="admonition-homework-interactive-on-your-cluster exercise important admonition" id="exercise-0">
+<p class="admonition-title">Homework: Interactive on your cluster</p>
+<ul class="simple">
+<li><p>Figure out how to run interactively jobs on your cluster</p></li>
+<li><p>Run interactively and run your own code.</p></li>
+</ul>
+</div>
+</section>
+<section id="sessions-that-persist-across-logins-screen-and-tmux">
+<h2>Sessions that persist across logins: screen and tmux<a class="headerlink" href="#sessions-that-persist-across-logins-screen-and-tmux" title="Permalink to this heading"></a></h2>
+<p>When you log out, everything (except batch jobs) gets lost.  Or does
+it?</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Screen">screen</a> and
+<a class="reference external" href="https://en.wikipedia.org/wiki/Tmux">tmux</a> allow you to start a
+session, log out, and resume that session.  Sessions have to be
+started within screen/tmux.</p>
+<p>Screen is slightly older, tmux is newer.  Otherwise they are pretty
+similar.</p>
+<div class="admonition-demo-tmux demo admonition" id="demo-1">
+<p class="admonition-title">Demo: tmux</p>
+<ul class="simple">
+<li><p>Connect to the cluster</p></li>
+<li><p>Navigate to a directory</p></li>
+<li><p>Create a tmux session: <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">new</span></code></p></li>
+<li><p>Start a program: <code class="docutils literal notranslate"><span class="pre">htop</span></code> or similar</p></li>
+<li><p>Detach tmux: <code class="docutils literal notranslate"><span class="pre">C-b</span> <span class="pre">d</span></code> (Control-b is the standard tmux prefix key, <code class="docutils literal notranslate"><span class="pre">d</span></code>
+for detach)</p></li>
+<li><p>Log out</p></li>
+<li><p>Log back in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">list-sessions</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">attach</span> <span class="pre">-t</span> <span class="pre">ID</span></code></p></li>
+<li><p>Create a new window: <code class="docutils literal notranslate"><span class="pre">C-b</span> <span class="pre">c</span></code></p></li>
+<li><p>Switch windows forward and back: <code class="docutils literal notranslate"><span class="pre">C-b</span> <span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">C-b</span> <span class="pre">n</span></code> (and <code class="docutils literal notranslate"><span class="pre">C-b</span></code>+a number)</p></li>
+</ul>
+</div>
+<p>When is this useful?  When is this a problem?  Should you combine
+interactive jobs and screen/tumx?</p>
+<div class="admonition-exercise exercise important admonition" id="exercise-1">
+<p class="admonition-title">Exercise</p>
+<p>Experiment with tmux or screen.</p>
+</div>
+</section>
+<section id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this heading"></a></h2>
+<p>Many people ask how to connect their graphical IDE to a cluster in
+order to do debugging.  Did you know you can debug things without a
+graphical environment - thus easily on the cluster?</p>
+<div class="admonition-debugging-with-pdb-python-debugger demo admonition" id="demo-2">
+<p class="admonition-title">Debugging with PDB (python debugger)</p>
+<p>Demonstration of Python debugging using command line and pdb.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>pdb<span class="w"> </span>pi-broken.py<span class="w"> </span><span class="m">1000</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">darstr1</span><span class="o">/</span><span class="n">pi</span><span class="o">-</span><span class="n">broken</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">cont</span>
+<span class="n">Calculating</span> <span class="n">pi</span> <span class="n">via</span> <span class="mi">1000</span> <span class="n">stochastic</span> <span class="n">trials</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python3.6/pdb.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1667</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
+    <span class="n">pdb</span><span class="o">.</span><span class="n">_runscript</span><span class="p">(</span><span class="n">mainpyfile</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python3.6/pdb.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1548</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_runscript</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib64/python3.6/bdb.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">434</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="nb">globals</span><span class="p">,</span> <span class="nb">locals</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/darstr1/pi-broken.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+  <span class="n">File</span> <span class="s2">&quot;/home/darstr1/pi-broken.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">70</span><span class="p">,</span> <span class="ow">in</span> <span class="n">estimate_pi</span>
+    <span class="n">in_circle_points</span> <span class="o">=</span> <span class="n">points_in_circle</span><span class="p">(</span><span class="n">iterations</span><span class="p">)</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">points_in_circle</span><span class="p">()</span> <span class="n">missing</span> <span class="mi">1</span> <span class="n">required</span> <span class="n">positional</span> <span class="n">argument</span><span class="p">:</span> <span class="s1">&#39;seed&#39;</span>
+<span class="n">Uncaught</span> <span class="n">exception</span><span class="o">.</span> <span class="n">Entering</span> <span class="n">post</span> <span class="n">mortem</span> <span class="n">debugging</span>
+<span class="n">Running</span> <span class="s1">&#39;cont&#39;</span> <span class="ow">or</span> <span class="s1">&#39;step&#39;</span> <span class="n">will</span> <span class="n">restart</span> <span class="n">the</span> <span class="n">program</span>
+<span class="o">&gt;</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">darstr1</span><span class="o">/</span><span class="n">pi</span><span class="o">-</span><span class="n">broken</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span><span class="n">estimate_pi</span><span class="p">()</span>
+<span class="o">-&gt;</span> <span class="n">in_circle_points</span> <span class="o">=</span> <span class="n">points_in_circle</span><span class="p">(</span><span class="n">iterations</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="nb">list</span>
+ <span class="mi">65</span>             <span class="n">in_circle_points</span> <span class="o">+=</span> <span class="n">pic_wrapper</span><span class="p">((</span><span class="n">iterations_serial</span><span class="p">,</span> <span class="n">random_gen</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+ <span class="mi">66</span>
+ <span class="mi">67</span>             <span class="c1"># Returns pi and in-circle points (successes)</span>
+ <span class="mi">68</span>             <span class="k">return</span> <span class="n">in_circle_points</span><span class="o">*</span><span class="mi">4</span><span class="o">/</span><span class="n">iters_actual</span><span class="p">,</span> <span class="n">in_circle_points</span>
+ <span class="mi">69</span>         <span class="k">else</span><span class="p">:</span>
+ <span class="mi">70</span>  <span class="o">-&gt;</span>         <span class="n">in_circle_points</span> <span class="o">=</span> <span class="n">points_in_circle</span><span class="p">(</span><span class="n">iterations</span><span class="p">)</span>
+ <span class="mi">71</span>             <span class="k">return</span> <span class="n">in_circle_points</span><span class="o">*</span><span class="mi">4</span><span class="o">/</span><span class="n">iterations</span><span class="p">,</span> <span class="n">in_circle_points</span>
+ <span class="mi">72</span>
+ <span class="mi">73</span>
+ <span class="mi">74</span>     <span class="k">def</span> <span class="nf">estimate_pi_vectorized</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
+ <span class="mi">75</span>         <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">help</span><span class="p">(</span><span class="n">points_in_circle</span><span class="p">)</span>
+<span class="o">***</span> <span class="n">No</span> <span class="n">help</span> <span class="k">for</span> <span class="s1">&#39;(points_in_circle)&#39;</span>
+
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">points_in_circle</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+<span class="mi">782</span>
+</pre></div>
+</div>
+</div>
+<p>This works, it can be primitive but good for quickly testing thinsg.</p>
+<div class="admonition-homework-command-line-debuggers exercise important admonition" id="exercise-2">
+<p class="admonition-title">Homework: command line debuggers</p>
+<p>Try out the above, or the IPython debugger <code class="docutils literal notranslate"><span class="pre">ipdb</span></code> which is more
+colorful and powerful.</p>
+</div>
+</section>
+<section id="shell-tips-and-tricks">
+<h2>Shell tips and tricks<a class="headerlink" href="#shell-tips-and-tricks" title="Permalink to this heading"></a></h2>
+<p>Various things in the shell can make your life easier.</p>
+<div class="admonition-demo-history-searching demo admonition" id="demo-3">
+<p class="admonition-title">Demo: History searching</p>
+<ul class="simple">
+<li><p>You know about the up and down arrow keys, right?  Try <code class="docutils literal notranslate"><span class="pre">C-r</span></code> and
+typing a few characters for an incremental backwards search.</p></li>
+<li><p>Try adding <code class="docutils literal notranslate"><span class="pre">!$</span></code> as a command line argument (at least zsh and bash).
+This is replaced with the last argument of the previous line.  There
+are many more of these.</p></li>
+</ul>
+</div>
+<div class="admonition-demo-shell-aliases demo admonition" id="demo-4">
+<p class="admonition-title">Demo: shell aliases</p>
+<ul>
+<li><p>In your .bashrc, add</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span><span class="w"> </span><span class="nv">l</span><span class="o">=</span><span class="sb">`</span>ls<span class="sb">`</span>
+<span class="nb">alias</span><span class="w"> </span><span class="nv">ll</span><span class="o">=</span><span class="sb">`</span>ls<span class="w"> </span>-l<span class="sb">`</span>
+</pre></div>
+</div>
+</li>
+<li><p>These are aliases: simple way to save keystrokes.  You can do plenty
+more.</p></li>
+<li><p>For other shells, learn how to do this.</p></li>
+</ul>
+</div>
+<div class="admonition-demo-shell-functions demo admonition" id="demo-5">
+<p class="admonition-title">Demo: shell functions</p>
+<ul>
+<li><p>In your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>, add:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>sacct-at-time<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">(</span><span class="w"> </span>sacct<span class="w"> </span>-N<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span>-S<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span><span class="w"> </span>-s<span class="w"> </span>R<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="o">)</span>
+</pre></div>
+</div>
+<p>This runs sacct at with a certain <code class="docutils literal notranslate"><span class="pre">-S</span></code> and <code class="docutils literal notranslate"><span class="pre">-E</span></code> (start/end) and <code class="docutils literal notranslate"><span class="pre">-N</span></code>
+(a node list) - used for finding what was running on a node at a
+certain time.</p>
+</li>
+<li><p>This can’t be an alias since the arguments get interspersed and
+duplicated within the commond</p></li>
+<li><p>For other shells, learn how to do this.</p></li>
+</ul>
+</div>
+<div class="admonition-demo-one-bashrc-with-conditional-sections demo admonition" id="demo-6">
+<p class="admonition-title">Demo: one .bashrc with conditional sections</p>
+<ul>
+<li><p>Add the following to your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># hostname -d  returns the domain part (triton.aalto.fi on any</span>
+<span class="c1"># Triton cluster node)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>hostname<span class="w"> </span>-d<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;triton.aalto.fi&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="c1"># command specific to the Triton login node</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>Or even this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="p">: -15</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;triton.aalto.fi&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="c1"># commands for any Triton node here</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>You have to verify the contents of <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-d</span></code> and <code class="docutils literal notranslate"><span class="pre">$HOSTNAME</span></code></p>
+</li>
+<li><p>This allows you to have one .bashrc file that is used on all
+computers, with common stuff and computer-specific things, if you want.</p></li>
+<li><p>How do you keep them in sync? (think back to <a class="reference internal" href="../Data_sync/"><span class="doc">Data sync</span></a>)</p></li>
+<li><p>For other shells, learn how to do this.</p></li>
+</ul>
+</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h2>
+<p>The command line can provide plenty of power to compete with
+graphical interfaces - sometimes.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../GUIs/" class="btn btn-neutral float-left" title="Graphical interfaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../VSCode/" class="btn btn-neutral float-right" title="VSCode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
